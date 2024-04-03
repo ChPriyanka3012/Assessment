@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div>
+        <h1><center>I'm not a robot</center></h1>
+        <h3 id="h"><center>Please click on the identical tiles to verify that you are not a
+            robot.</center></h3>
+    </div>
+    <div class="selected">
+    
+        <img src="https://picsum.photos/id/237/200/300" class="img1" id="i1">
+        <img src="https://picsum.photos/seed/picsum/200/300" class="img2" id="i2">
+        <img src="https://picsum.photos/200/300?grayscale" class="img3" id="i3">
+        <img src="https://picsum.photos/200/300/" class="img4" id="i4">
+        <img src="https://picsum.photos/200/300.jpg" class="img5" id="i5">
+        <img src="https://picsum.photos/seed/picsum/200/300" class="img2" id="i6">
+    </div>
+    <button id="reset">Reset</button>
+    <button id="verify" onclick="checking()">Verify</button>
+    <div id="output"></div>
+    <script>
+         let imgBtn=document.querySelectorAll("img")
+         let resBtn=document.querySelector("#reset");
+         let verifyBtn=document.querySelector("#verify");
+         let outputBtn=document.querySelector("#output");
+         verifyBtn.style.display="none";
+         resBtn.style.display="none";
+       
+       let clickCount=0;
+            imgBtn.forEach((element) => {
+                element.addEventListener("click",()=>{
+                    clickCount=clickCount+1;
+                    if(clickCount==0){
+                        alert("Please click on the identical tiles to verify that you are not a robot");
+                    }
+                    else if(clickCount==2){
+                        resBtn.style.display="none";
+                        verifyBtn.style.display="";   
+                    
+                    }
+                    else if(clickCount==1){
+                        
+                        resBtn.style.display="";
+                        verifyBtn.style.display="none";
+                    }
+                    // else{
+                    //     alert("Please click on the identical tiles to verify that you are not a robot");
+                    // }
+                    // if(i1.click==i6.click){
+                    //     verifyBtn.click();
+                    //     //console.log("Wait for 2secs, its verifying")
+                    // }
+        });
+    });
+    //    let imageArray=[];
+    //    imageArray.forEach((ele,index)=>{
+    //     ele.addEventListener("click",()=>{
+    //         if(ele[index].click==ele[index].click){
+    //                     alert("Wait for 2secs, its verifying")
+    //                 }
+    //         else {
+    //             alert("You are selecting different images")
+    //         }
+    //     })
+
+    //    })
+let imageArray=[];
+    function checking(){
+        let str="";
+        if(imageArray[1]==imageArray[5]){
+            alert("Verifying");
+            str=str+"You are a human, Congartulations"
+        }
+        else {
+            str=str+"We can't verify you as a human"
+        }
+        output.innerHTML=str;
+    }
+       
+           
+    </script>
+</body>
+</html>
